@@ -1,11 +1,10 @@
-import java.math.BigDecimal;
 import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calc {
     Scanner scanner = new Scanner(System.in);
+    InputHandler handler = new InputHandler();
 
     public void menu() {
         System.out.println("Enter the number of operation");
@@ -24,11 +23,8 @@ public class Calc {
 
     public void addition() {
         try {
-            System.out.println("Enter the first argument");
-            BigDecimal arg1 = scanner.nextBigDecimal();
-            System.out.println("Enter the second argument");
-            BigDecimal arg2 = scanner.nextBigDecimal();
-            System.out.println(String.format("The result: %g", arg1.add(arg2)));
+            handler.enterNums();
+            System.out.println(String.format("The result: %g", handler.getArg1().add(handler.getArg2())));
         } catch (InputMismatchException e) {
             System.out.println("Wrong input");
         }
@@ -37,11 +33,8 @@ public class Calc {
 
     public void subtraction() {
         try {
-            System.out.println("Enter the first argument");
-            BigDecimal sub1 = scanner.nextBigDecimal();
-            System.out.println("Enter the second argument");
-            BigDecimal sub2 = scanner.nextBigDecimal();
-            System.out.println(String.format("The result: %g", sub1.subtract(sub2)));
+            handler.enterNums();
+            System.out.println(String.format("The result: %g", handler.getArg1().subtract(handler.getArg2())));
         } catch (InputMismatchException e) {
             System.out.println("Wrong input");
         }
@@ -49,11 +42,8 @@ public class Calc {
 
     public void product() {
         try {
-            System.out.println("Enter the first multiplier");
-            BigDecimal mult1 = scanner.nextBigDecimal();
-            System.out.println("Enter the second multiplier");
-            BigDecimal mult2 = scanner.nextBigDecimal();
-            System.out.println(String.format("The result: %g", mult1.multiply(mult2)));
+            handler.enterNums();
+            System.out.println(String.format("The result: %g", handler.getArg1().multiply(handler.getArg2())));
         } catch (InputMismatchException e) {
             System.out.println("Wrong input");
         }
@@ -61,11 +51,8 @@ public class Calc {
 
     public void division() {
         try {
-            System.out.println("Enter the numerator");
-            BigDecimal num = scanner.nextBigDecimal();
-            System.out.println("Enter the second dominator");
-            BigDecimal domin = scanner.nextBigDecimal();
-            System.out.println(String.format("The result: %g", num.divide(domin, MathContext.DECIMAL64)));
+            handler.enterNums();
+            System.out.println(String.format("The result: %g", handler.getArg1().divide(handler.getArg2(), MathContext.DECIMAL64)));
         } catch (ArithmeticException e) {
             System.out.println("Division by zero is impossible");
         } catch (InputMismatchException e) {

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Calc {
     Scanner scanner = new Scanner(System.in);
     InputHandler handler = new InputHandler();
-
+    //комментарий комментарий комментарий
     public void menu() {
         System.out.println("Enter the number of operation");
         System.out.println("1 - '+' ");
